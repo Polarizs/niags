@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Fase 6 | NIAGS</title>
+
+  <link rel="stylesheet" href="fase-06.css">
+</head>
+
+<body>
+  <main class="fase">
+
+    <section class="conteudo-fase">
+
+      <h1 class="titulo-fase">
+        Fase 6: METAMORFOSE
+      </h1>
+
+      <div class="texto-instrucao">
+        <p>
+          A ordem está no <span class="palavra-azul">céu</span>.
+        </p>
+
+        <p>
+          Tire o corpo.
+        </p>
+
+        <p>
+          Leia o intruso.
+        </p>
+      </div>
+
+      <div class="lista-anagramas">
+        <p>eioumvcrr</p>
+        <p>euavsn</p>
+        <p>raerzt</p>
+        <p>iretma</p>
+        <p>oupjtrei</p>
+      </div>
+
+      <form id="formResposta" class="area-resposta">
+
+        <p
+          id="mensagemResposta"
+          class="mensagem-resposta"
+          aria-live="polite"
+        ></p>
+
+        <input
+          id="campoResposta"
+          class="campo-resposta"
+          type="text"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="digite sua resposta aqui"
+          required
+        >
+
+        <button
+          class="botao-continuar"
+          type="submit"
+        >
+          CONTINUAR
+        </button>
+
+      </form>
+
+      <section
+        id="areaRespostaRevelada"
+        class="area-resposta-revelada"
+        hidden
+      >
+        <button
+          id="botaoRevelarResposta"
+          class="botao-revelar-resposta"
+          type="button"
+        >
+          REVELAR RESPOSTA
+        </button>
+
+        <p
+          id="respostaRevelada"
+          class="resposta-revelada"
+          hidden
+        >
+          vazio
+        </p>
+      </section>
+
+    </section>
+
+  </main>
+
+  <div
+    id="transicaoFase"
+    class="transicao-fase"
+  ></div>
+
+  <script src="fase-06.js"></script>
+</body>
+</html>

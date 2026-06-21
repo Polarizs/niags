@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Fase 8 | NIAGS</title>
+
+  <link rel="stylesheet" href="fase-08.css">
+</head>
+
+<body>
+  <main class="fase">
+
+    <section class="conteudo-fase">
+
+      <h1 class="titulo-fase">
+        Fase 8: PERIGO!
+      </h1>
+
+      <p class="subtitulo-enigma">
+        ATENÇÃO!
+      </p>
+
+      <div class="imagem-enigma">
+        <img
+          src="../assets/fase-08-teclado.png"
+          alt=""
+        >
+      </div>
+
+      <form id="formResposta" class="area-resposta">
+
+        <p
+          id="mensagemResposta"
+          class="mensagem-resposta"
+          aria-live="polite"
+        ></p>
+
+        <input
+          id="campoResposta"
+          class="campo-resposta"
+          type="text"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="digite sua resposta aqui"
+          required
+        >
+
+        <button
+          class="botao-continuar"
+          type="submit"
+        >
+          CONTINUAR
+        </button>
+
+      </form>
+
+      <section
+        id="areaRespostaRevelada"
+        class="area-resposta-revelada"
+        hidden
+      >
+        <button
+          id="botaoRevelarResposta"
+          class="botao-revelar-resposta"
+          type="button"
+        >
+          REVELAR RESPOSTA
+        </button>
+
+        <p
+          id="respostaRevelada"
+          class="resposta-revelada"
+          hidden
+        >
+          nocivo
+        </p>
+      </section>
+
+    </section>
+
+  </main>
+
+  <div
+    id="transicaoFase"
+    class="transicao-fase"
+  ></div>
+
+  <script src="fase-08.js"></script>
+</body>
+</html>
