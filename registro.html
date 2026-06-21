@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Registro | NIAGS</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="registro.css">
+</head>
+
+<body>
+<section id="avisoInicial" class="aviso-inicial">
+  <div class="aviso-caixa">
+
+    <div class="aviso-cabecalho">
+      <h1 class="aviso-niags">NIAGS</h1>
+      <h2 class="aviso-titulo">AVISO</h2>
+    </div>
+
+    <div id="textoAviso" class="aviso-texto">
+      <h3>ANTES DE PROSSEGUIR</h3>
+
+      <p>
+        Nem toda resposta estará diante dos seus olhos.
+      </p>
+
+      <p>
+        Algumas pistas podem estar no som, no nome dos arquivos,
+        nas imagens, nos códigos, nas ausências ou naquilo que
+        parece não ter função.
+      </p>
+
+      <p>
+        Observe antes de responder. Anote antes de esquecer.
+        Volte quando necessário.
+      </p>
+
+      <p>
+        O NIAGS não avalia apenas o que você sabe.
+        Ele observa como você procura.
+      </p>
+    </div>
+
+    <button
+      id="botaoProsseguirAviso"
+      class="botao-prosseguir-aviso"
+      type="button"
+    >
+      prosseguir
+    </button>
+
+  </div>
+</section>
+
+<audio
+  id="somAdentroRegistro"
+  src="assets/adentro.mp3"
+  loop
+  preload="auto"
+></audio>
+
+  <main id="conteudoRegistro" class="registro conteudo-registro bloqueado">
+
+    <!-- Título -->
+    <header class="titulo-niags">
+      <span class="ornamento ornamento-esquerda">
+        <span class="linha-ornamento"></span>
+        <span class="ponto-ornamento"></span>
+      </span>
+
+      <h1>NIAGS</h1>
+
+      <span class="ornamento ornamento-direita">
+        <span class="ponto-ornamento"></span>
+        <span class="linha-ornamento"></span>
+      </span>
+    </header>
+
+    <!-- Painel -->
+    <section class="painel-progresso">
+      <h2>REGISTRO DE PROGRESSO</h2>
+
+      <div class="divisor"></div>
+
+      <div class="linha-registro-superior">
+
+  <section class="grupo-progresso bloco-fases-concluidas">
+    <h3>FASES CONCLUÍDAS</h3>
+
+    <div class="colunas-fases">
+      <div
+        id="colunaFases1"
+        class="coluna-fases"
+      ></div>
+
+      <div
+        id="colunaFases2"
+        class="coluna-fases"
+      ></div>
+
+      <div
+        id="colunaFases3"
+        class="coluna-fases"
+      ></div>
+    </div>
+
+    <p
+      id="nenhumaFase"
+      class="nenhuma-fase"
+      hidden
+    >
+      NENHUM REGISTRO ENCONTRADO
+    </p>
+  </section>
+
+  <section class="grupo-progresso bloco-instrucoes-observador">
+    <h3>INSTRUÇÕES AO OBSERVADOR</h3>
+
+    <button
+      id="botaoInstrucoes"
+      class="botao-instrucoes"
+      type="button"
+    >
+      ABRIR INSTRUÇÕES
+    </button>
+  </section>
+
+</div>
+
+<section class="grupo-progresso fase-atual-container">
+        <h3>FASE ATUAL</h3>
+
+        <button
+          id="botaoFaseAtual"
+          class="fase-atual"
+          type="button"
+        >
+          <span id="numeroFaseAtual">
+            FASE 1
+          </span>
+
+          <span class="separador">·</span>
+
+          <span class="continuar">
+            CONTINUAR
+          </span>
+        </button>
+      </section>
+    </section>
+
+    <p
+      id="usuarioRegistro"
+      class="usuario-registro"
+    ></p>
+
+  </main>
+
+<section
+  id="telaInstrucoes"
+  class="tela-instrucoes"
+  hidden
+>
+  <div class="caixa-instrucoes">
+    <h2>INSTRUÇÕES AO OBSERVADOR</h2>
+
+    <div class="texto-instrucoes">
+  <p>
+    Todas as respostas devem ser enviadas em letras minúsculas.
+  </p>
+
+  <p>
+    Não use acentos, espaços ou hífens.
+  </p>
+
+  <p>
+    Use apenas letras e números.
+  </p>
+
+  <p>
+    Algumas respostas serão palavras. Outras serão números.
+    Outras talvez sejam palavras e números tentando parecer
+    uma coisa só.
+  </p>
+
+  <p>
+    O formato também pode ser parte do enigma.
+  </p>
+
+  <p>
+    Fique tranquilo: se a sua resposta for previsível,
+    <span class="destaque-aviso">
+  <span class="ele-branco">“ELE”</span> TE AVISARÁ.
+</span>
+  </p>
+
+  <p>
+    Para uma melhor experiência e concentração, utilize tela cheia. F11.
+  </p>
+
+  <p class="assinatura-instrucoes">
+    Prossiga, observante.
+  </p>
+</div>
+
+    <button
+      id="botaoFecharInstrucoes"
+      class="botao-fechar-instrucoes"
+      type="button"
+    >
+      retornar
+    </button>
+  </div>
+</section>
+
+  <div
+    id="transicaoFase"
+    class="transicao-fase"
+  ></div>
+
+  <script src="registro.js"></script>
+</body>
+</html>

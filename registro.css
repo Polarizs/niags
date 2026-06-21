@@ -1,0 +1,1040 @@
+/* =========================
+   CONFIGURAÇÕES GERAIS
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  background: #000;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  color: #d8d8d8;
+
+  font-family:
+    "Cinzel",
+    "Times New Roman",
+    serif;
+}
+
+
+/* =========================
+   FUNDO ESCURO
+========================= */
+
+body {
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(35, 35, 35, 0.18),
+      rgba(0, 0, 0, 0.94) 60%
+    ),
+    #000;
+}
+
+body::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 159px,
+      rgba(255, 255, 255, 0.008) 160px
+    );
+
+  opacity: 0.35;
+}
+
+
+/* =========================
+   ESTRUTURA
+========================= */
+
+.registro {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding:
+    7vh
+    8vw
+    7vh;
+}
+
+
+/* =========================
+   TÍTULO NIAGS
+========================= */
+
+.titulo-niags {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 27px;
+
+  opacity: 0;
+
+  animation:
+    aparecerElemento
+    1.8s
+    ease
+    0.3s
+    forwards;
+}
+
+.titulo-niags h1 {
+  color: rgba(220, 220, 220, 0.94);
+
+  font-size: clamp(45px, 5vw, 70px);
+  font-weight: 400;
+  letter-spacing: 16px;
+
+  text-shadow:
+    0 0 5px rgba(230, 230, 230, 0.20),
+    0 0 14px rgba(210, 210, 210, 0.10),
+    0 0 28px rgba(255, 255, 255, 0.04);
+}
+
+.ornamento {
+  width: 110px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.ornamento-esquerda {
+  justify-content: flex-end;
+}
+
+.ornamento-direita {
+  justify-content: flex-start;
+}
+
+.linha-ornamento {
+  display: block;
+
+  width: 72px;
+  height: 1px;
+
+  background:
+    rgba(195, 195, 195, 0.38);
+}
+
+.ponto-ornamento {
+  display: block;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(220, 220, 220, 0.82);
+
+  box-shadow:
+    0 0 7px rgba(230, 230, 230, 0.20);
+}
+
+
+/* =========================
+   PAINEL
+========================= */
+
+.painel-progresso {
+  width: min(1100px, 100%);
+
+  margin-top:
+    clamp(55px, 8vh, 95px);
+
+  opacity: 0;
+
+  animation:
+    aparecerElemento
+    1.8s
+    ease
+    1s
+    forwards;
+}
+
+.painel-progresso h2 {
+  color: rgba(215, 215, 215, 0.86);
+
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 400;
+  letter-spacing: 8px;
+  text-align: center;
+
+  text-shadow:
+    0 0 7px rgba(225, 225, 225, 0.12);
+}
+
+.divisor {
+  width: 150px;
+  height: 1px;
+
+  margin: 22px auto 52px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(205, 205, 205, 0.42),
+      transparent
+    );
+}
+
+
+/* =========================
+   GRUPOS
+========================= */
+
+.grupo-progresso {
+  width: 100%;
+
+  margin-bottom: 50px;
+}
+
+.grupo-progresso h3 {
+  margin-bottom: 25px;
+
+  color: rgba(205, 205, 205, 0.64);
+
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 5px;
+}
+
+
+/* =========================
+   COLUNAS INVISÍVEIS
+========================= */
+
+.colunas-fases {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  column-gap:
+    clamp(50px, 8vw, 135px);
+
+  width: 100%;
+}
+
+.coluna-fases {
+  display: flex;
+  flex-direction: column;
+
+  gap: 17px;
+
+  min-width: 0;
+}
+
+.fase-concluida {
+  position: relative;
+
+  min-height: 29px;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 18px;
+
+  color: rgba(210, 210, 210, 0.72);
+  background: transparent;
+
+  border: none;
+  outline: none;
+
+  font-family:
+    "Cinzel",
+    "Times New Roman",
+    serif;
+
+  font-size: 14px;
+  letter-spacing: 4px;
+  text-align: left;
+
+  opacity: 0;
+
+  cursor: pointer;
+
+  animation:
+    aparecerFase
+    0.7s
+    ease
+    forwards;
+
+  transition:
+    color 0.35s ease,
+    transform 0.35s ease;
+}
+
+.fase-concluida:hover {
+  color: rgba(216, 184, 120, 0.90);
+
+  transform: translateX(5px);
+}
+
+.fase-concluida::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 50%;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(195, 195, 195, 0.50);
+
+  transform:
+    translateY(-50%);
+}
+
+.nenhuma-fase {
+  color: rgba(190, 190, 190, 0.46);
+
+  font-size: 12px;
+  letter-spacing: 3px;
+}
+
+
+/* =========================
+   FASE ATUAL
+========================= */
+
+.fase-atual-container {
+  margin-top: 14px;
+}
+
+.fase-atual {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 4px 0;
+
+  color: #d8b878;
+  background: transparent;
+
+  border: none;
+  outline: none;
+  box-shadow: none;
+
+  font-family:
+    "Cinzel",
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(16px, 1.7vw, 21px);
+
+  letter-spacing: 5px;
+
+  cursor: pointer;
+
+  transition:
+    color 0.4s ease,
+    transform 0.4s ease;
+}
+
+.fase-atual::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -8px;
+
+  width: 0;
+  height: 1px;
+
+  background:
+    rgba(216, 184, 120, 0.68);
+
+  transition:
+    width 0.5s ease;
+}
+
+.fase-atual:hover {
+  color: #f0d6a0;
+
+  transform: translateX(5px);
+}
+
+.fase-atual:hover::after {
+  width: 100%;
+}
+
+.separador {
+  color:
+    rgba(216, 184, 120, 0.48);
+}
+
+.continuar {
+  font-size: 0.76em;
+  letter-spacing: 4px;
+}
+
+
+/* =========================
+   USUÁRIO
+========================= */
+
+.usuario-registro {
+  position: fixed;
+
+  right: 4vw;
+  bottom: 4vh;
+
+  color:
+    rgba(190, 190, 190, 0.34);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+
+/* =========================
+   TRANSIÇÃO PARA A FASE
+========================= */
+
+.transicao-fase {
+  position: fixed;
+  inset: 0;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  background: #000;
+
+  z-index: 100;
+
+  transition:
+    opacity 0.9s ease,
+    visibility 0.9s ease;
+}
+
+.transicao-fase.ativa {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+
+@keyframes aparecerElemento {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(10px);
+
+    filter:
+      blur(2px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+    filter:
+      blur(0);
+  }
+}
+
+@keyframes aparecerFase {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+
+/* =========================
+   TELAS MENORES
+========================= */
+
+@media (max-width: 800px) {
+  .registro {
+    padding:
+      6vh
+      8vw
+      8vh;
+  }
+
+  .titulo-niags {
+    gap: 13px;
+  }
+
+  .titulo-niags h1 {
+    font-size: 34px;
+    letter-spacing: 8px;
+  }
+
+  .ornamento {
+    width: 47px;
+    gap: 6px;
+  }
+
+  .linha-ornamento {
+    width: 29px;
+  }
+
+  .ponto-ornamento {
+    width: 5px;
+    height: 5px;
+  }
+
+  .painel-progresso {
+    margin-top: 60px;
+  }
+
+  .painel-progresso h2 {
+    font-size: 17px;
+    letter-spacing: 5px;
+  }
+
+  .colunas-fases {
+    grid-template-columns: 1fr;
+    row-gap: 17px;
+  }
+
+  .fase-atual {
+    flex-wrap: wrap;
+  }
+
+  .usuario-registro {
+    position: static;
+
+    align-self: flex-end;
+
+    margin-top: auto;
+    padding-top: 35px;
+  }
+}
+
+/* =========================
+   AVISO INICIAL
+========================= */
+
+.aviso-inicial {
+  position: fixed;
+  inset: 0;
+
+  z-index: 80;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(18, 18, 18, 0.98),
+      rgba(0, 0, 0, 1)
+    );
+
+  color: #d8d8d8;
+
+  font-family: Cambria, Georgia, "Times New Roman", serif;
+}
+
+.aviso-inicial ::selection {
+  color: rgba(255, 255, 255, 0.96);
+  background: rgba(110, 8, 8, 0.88);
+}
+
+.aviso-inicial.saindo {
+  animation:
+    sumirAvisoInicial
+    1.2s
+    ease
+    forwards;
+}
+
+.aviso-caixa {
+  width: min(760px, 86vw);
+
+  text-align: center;
+}
+
+.aviso-cabecalho {
+  opacity: 0;
+
+  transform: translateY(8px);
+
+  transition:
+    opacity 1.6s ease,
+    transform 1.6s ease,
+    filter 1.6s ease;
+
+  filter: blur(2px);
+}
+
+.aviso-inicial.mostrar-cabecalho .aviso-cabecalho {
+  opacity: 1;
+
+  transform: translateY(0);
+
+  filter: blur(0);
+}
+
+.aviso-niags {
+  margin-bottom: 32px;
+
+  color: rgba(215, 215, 215, 0.90);
+
+  font-size: 38px;
+  font-weight: normal;
+  letter-spacing: 13px;
+
+  text-shadow:
+    0 0 5px rgba(255, 255, 255, 0.14),
+    0 0 18px rgba(255, 255, 255, 0.06);
+}
+
+.aviso-titulo {
+  margin-bottom: 52px;
+
+  color: rgba(130, 24, 24, 0.88);
+
+  font-size: 22px;
+  font-weight: normal;
+  letter-spacing: 8px;
+}
+
+.aviso-texto {
+  opacity: 0;
+
+  transform: translateY(10px);
+
+  transition:
+    opacity 1.8s ease,
+    transform 1.8s ease,
+    filter 1.8s ease;
+
+  filter: blur(2px);
+}
+
+.aviso-inicial.mostrar-texto .aviso-texto {
+  opacity: 1;
+
+  transform: translateY(0);
+
+  filter: blur(0);
+}
+
+.aviso-texto h3 {
+  display: inline-block;
+
+  margin-bottom: 30px;
+  padding: 4px 12px;
+
+  color: rgba(245, 245, 245, 0.92);
+  background: rgba(105, 8, 8, 0.78);
+
+  font-size: 17px;
+  font-weight: normal;
+  letter-spacing: 4px;
+
+  text-shadow:
+    0 0 4px rgba(255, 255, 255, 0.16);
+
+  box-shadow:
+    0 0 14px rgba(90, 0, 0, 0.18);
+}
+
+.aviso-texto p {
+  margin-bottom: 18px;
+
+  color: rgba(225, 225, 225, 0.72);
+
+  font-size: 17px;
+  line-height: 1.55;
+  letter-spacing: 0.3px;
+}
+
+.botao-prosseguir-aviso {
+  margin-top: 42px;
+  padding: 0;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  color: rgba(216, 184, 120, 0.86);
+  background: transparent;
+
+  border: none;
+  outline: none;
+
+  font-family: Cambria, Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  font-style: italic;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  transition:
+    opacity 1.5s ease,
+    visibility 1.5s ease,
+    color 0.4s ease,
+    transform 0.4s ease;
+}
+
+.aviso-inicial.mostrar-prosseguir .botao-prosseguir-aviso {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.botao-prosseguir-aviso:hover {
+  color: rgba(240, 214, 160, 1);
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   REGISTRO BLOQUEADO
+========================= */
+
+.conteudo-registro.bloqueado {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.conteudo-registro.liberado {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  animation:
+    aparecerRegistroDepoisAviso
+    1.8s
+    ease
+    forwards;
+}
+
+
+/* =========================
+   PALAVRA TEMPORÁRIA
+========================= */
+
+.marca-temporaria {
+  position: fixed;
+
+  right: 38px;
+  bottom: 46px;
+
+  z-index: 90;
+
+  color: transparent;
+
+  font-family: Cambria, Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.marca-temporaria::selection {
+  color: rgba(120, 18, 18, 0.95);
+  background: transparent;
+}
+
+
+/* =========================
+   ANIMAÇÕES DO AVISO
+========================= */
+
+@keyframes sumirAvisoInicial {
+  from {
+    opacity: 1;
+
+    filter: blur(0);
+  }
+
+  to {
+    opacity: 0;
+
+    filter: blur(4px);
+    visibility: hidden;
+  }
+}
+
+@keyframes aparecerRegistroDepoisAviso {
+  from {
+    opacity: 0;
+
+    filter: blur(3px);
+  }
+
+  to {
+    opacity: 1;
+
+    filter: blur(0);
+  }
+}
+
+/* =========================
+   LINHA SUPERIOR DO REGISTRO
+========================= */
+
+.linha-registro-superior {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 120px;
+
+  width: 100%;
+  max-width: 1060px;
+
+  margin-top: 55px;
+}
+
+.bloco-fases-concluidas,
+.bloco-instrucoes-observador {
+  min-height: 120px;
+}
+
+.bloco-instrucoes-observador {
+  text-align: left;
+}
+
+.botao-instrucoes {
+  margin-top: 28px;
+  padding: 0;
+
+  color: rgba(216, 184, 120, 0.86);
+  background: transparent;
+
+  border: none;
+  outline: none;
+
+  font-family: "Cinzel", Cambria, Georgia, serif;
+  font-size: 15px;
+  letter-spacing: 4px;
+
+  cursor: pointer;
+
+  opacity: 0.78;
+
+  transition:
+    opacity 0.4s ease,
+    color 0.4s ease,
+    transform 0.4s ease;
+}
+
+.botao-instrucoes:hover {
+  opacity: 1;
+
+  color: rgba(240, 214, 160, 1);
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   TELA DE INSTRUÇÕES
+========================= */
+
+.tela-instrucoes {
+  position: fixed;
+  inset: 0;
+
+  z-index: 95;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(18, 18, 18, 0.98),
+      rgba(0, 0, 0, 1)
+    );
+
+  opacity: 0;
+  pointer-events: none;
+
+  font-family: "Cinzel", Cambria, Georgia, serif;
+}
+
+.tela-instrucoes.ativa {
+  animation:
+    abrirTelaInstrucoes
+    1.2s
+    ease
+    forwards;
+
+  pointer-events: auto;
+}
+
+.tela-instrucoes.saindo {
+  animation:
+    fecharTelaInstrucoes
+    1s
+    ease
+    forwards;
+}
+
+.caixa-instrucoes {
+  width: min(760px, 84vw);
+
+  text-align: center;
+}
+
+.caixa-instrucoes h2 {
+  margin-bottom: 52px;
+
+  color: rgba(216, 184, 120, 0.88);
+
+  font-size: 22px;
+  font-weight: normal;
+  letter-spacing: 7px;
+}
+
+.texto-instrucoes p {
+  margin-bottom: 20px;
+
+  color: rgba(220, 220, 220, 0.72);
+
+  font-size: 16px;
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+}
+
+.assinatura-instrucoes {
+  margin-top: 42px;
+
+  color: rgba(150, 28, 28, 0.82) !important;
+
+  font-style: italic;
+}
+
+.botao-fechar-instrucoes {
+  margin-top: 46px;
+  padding: 0;
+
+  color: rgba(216, 184, 120, 0.82);
+  background: transparent;
+
+  border: none;
+  outline: none;
+
+  font-family: "Cinzel", Cambria, Georgia, serif;
+  font-size: 16px;
+  font-style: italic;
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  transition:
+    color 0.4s ease,
+    transform 0.4s ease;
+}
+
+.botao-fechar-instrucoes:hover {
+  color: rgba(240, 214, 160, 1);
+
+  transform: translateY(-2px);
+}
+
+
+@keyframes abrirTelaInstrucoes {
+  from {
+    opacity: 0;
+
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+
+    filter: blur(0);
+  }
+}
+
+@keyframes fecharTelaInstrucoes {
+  from {
+    opacity: 1;
+
+    filter: blur(0);
+  }
+
+  to {
+    opacity: 0;
+
+    filter: blur(4px);
+  }
+}
+
+.destaque-aviso {
+  color: rgba(245, 235, 34, 0.92);
+
+  text-shadow:
+    0 0 6px rgba(245, 235, 34, 0.16);
+}
+
+.ele-branco {
+  color: rgba(245, 245, 245, 0.96);
+
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.12);
+}
