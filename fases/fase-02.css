@@ -1,0 +1,288 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  background: #000;
+}
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  color: #d8d8d8;
+  font-family: Cambria, Georgia, "Times New Roman", serif;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(20, 20, 20, 0.22),
+      rgba(0, 0, 0, 0.96) 62%
+    ),
+    #000;
+}
+
+body::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 159px,
+      rgba(255, 255, 255, 0.008) 160px
+    );
+
+  opacity: 0.22;
+}
+
+.fase {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding-top: 145px;
+}
+
+.conteudo-fase {
+  width: min(620px, 88vw);
+  text-align: center;
+
+  transform: translateY(55px);
+}
+
+.titulo-fase {
+  margin-bottom: 105px;
+
+  color: rgba(150, 18, 30, 0.92);
+
+  font-size: 27px;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+}
+
+.enigma {
+  margin-bottom: 145px;
+}
+
+.morse {
+  color: rgba(215, 215, 215, 0.92);
+
+  font-family: "Courier New", Courier, monospace;
+  font-size: 34px;
+  letter-spacing: 4px;
+
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.10);
+}
+
+.mensagem-resposta {
+  min-height: 28px;
+  margin-bottom: 18px;
+
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+}
+
+.mensagem-resposta.aviso {
+  color: rgba(245, 235, 34, 0.95);
+
+  text-shadow:
+    0 0 6px rgba(245, 235, 34, 0.12);
+}
+
+.mensagem-resposta.erro {
+  color: rgba(175, 22, 36, 0.95);
+}
+
+.area-resposta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.campo-resposta {
+  width: min(300px, 90%);
+  height: 31px;
+
+  padding: 4px 10px;
+
+  color: rgba(235, 235, 235, 0.92);
+  background: rgba(120, 126, 141, 0.62);
+
+  border: none;
+  outline: none;
+
+  text-align: center;
+  font-family: Cambria, Georgia, "Times New Roman", serif;
+  font-size: 16px;
+}
+
+.campo-resposta::placeholder {
+  color: rgba(225, 225, 225, 0.82);
+}
+
+.botao-continuar {
+  margin-top: 14px;
+  padding: 0;
+
+  color: rgba(245, 245, 245, 0.97);
+  background: transparent;
+
+  border: none;
+  outline: none;
+
+  font-family: Cambria, Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.botao-continuar:hover {
+  color: rgba(216, 184, 120, 0.95);
+  transform: translateY(-2px);
+}
+
+.transicao-fase {
+  position: fixed;
+  inset: 0;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  background: #000;
+
+  z-index: 100;
+
+  transition:
+    opacity 0.9s ease,
+    visibility 0.9s ease;
+}
+
+.transicao-fase.ativa {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 760px) {
+  .fase {
+    padding-top: 110px;
+  }
+
+  .conteudo-fase {
+    transform: translateY(35px);
+  }
+
+  .titulo-fase {
+    margin-bottom: 80px;
+    font-size: 23px;
+  }
+
+  .enigma {
+    margin-bottom: 120px;
+  }
+
+  .morse {
+    font-size: 26px;
+    letter-spacing: 3px;
+  }
+
+  .botao-continuar {
+    font-size: 19px;
+  }
+}
+
+.area-resposta-revelada {
+  margin-top: 42px;
+
+  text-align: center;
+}
+
+.botao-revelar-resposta {
+  padding: 0;
+
+  color: rgba(216, 184, 120, 0.76);
+  background: transparent;
+
+  border: none;
+  outline: none;
+
+  font-family: Cambria, Georgia, "Times New Roman", serif;
+  font-size: 15px;
+  letter-spacing: 3px;
+
+  cursor: pointer;
+
+  transition:
+    color 0.35s ease,
+    transform 0.35s ease,
+    opacity 0.8s ease;
+}
+
+.botao-revelar-resposta:hover {
+  color: rgba(240, 214, 160, 1);
+
+  transform: translateY(-2px);
+}
+
+.resposta-revelada {
+  margin-top: 22px;
+
+  color: rgba(216, 184, 120, 0.92);
+
+  font-size: 22px;
+  letter-spacing: 5px;
+
+  opacity: 0;
+
+  animation:
+    revelarResposta
+    1.4s
+    ease
+    forwards;
+}
+
+@keyframes revelarResposta {
+  from {
+    opacity: 0;
+
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+
+    filter: blur(0);
+  }
+}
+
+.enigma-bloqueado,
+.enigma-bloqueado * {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.enigma-bloqueado {
+  cursor: default;
+}

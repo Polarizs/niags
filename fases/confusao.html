@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Fase 5 | NIAGS</title>
+
+  <link rel="stylesheet" href="fase-05.css">
+</head>
+
+<body>
+  <main class="fase">
+
+    <section class="conteudo-fase">
+
+      <h1 class="titulo-fase">
+        Fase 5: CONFUSÃO
+      </h1>
+
+      <div class="enigma-fase5 enigma-bloqueado">
+
+  <p class="frase-principal" draggable="false">
+    "Você é o meu roma*. Eu te oma*"
+  </p>
+
+  <div class="area-enigma">
+
+    <div class="lista-palavras">
+      <p draggable="false">AMOR*</p>
+      <p draggable="false">AZUL</p>
+      <p draggable="false">OPAS*</p>
+      <p draggable="false">OUTRO</p>
+    </div>
+
+    <p class="pergunta-pilar" draggable="false">
+      UM CONFUSO ACRÔNIMO?
+    </p>
+
+  </div>
+
+</div>
+
+      <form id="formResposta" class="area-resposta">
+
+        <p
+          id="mensagemResposta"
+          class="mensagem-resposta"
+          aria-live="polite"
+        ></p>
+
+        <input
+          id="campoResposta"
+          class="campo-resposta"
+          type="text"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="digite sua resposta aqui"
+          required
+        >
+
+        <button
+          class="botao-continuar"
+          type="submit"
+        >
+          CONTINUAR
+        </button>
+
+      </form>
+
+      <section
+        id="areaRespostaRevelada"
+        class="area-resposta-revelada"
+        hidden
+      >
+        <button
+          id="botaoRevelarResposta"
+          class="botao-revelar-resposta"
+          type="button"
+        >
+          REVELAR RESPOSTA
+        </button>
+
+        <p
+          id="respostaRevelada"
+          class="resposta-revelada"
+          hidden
+        ></p>
+      </section>
+
+    </section>
+
+  </main>
+
+  <div
+    id="transicaoFase"
+    class="transicao-fase"
+  ></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../niags-api.js"></script>
+<script src="fase-05.js"></script>
+</body>
+</html>

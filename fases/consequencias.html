@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Fase 7 | NIAGS</title>
+
+  <link rel="stylesheet" href="fase-07.css">
+</head>
+
+<body>
+  <main class="fase">
+
+    <section class="conteudo-fase">
+
+      <h1 class="titulo-fase">
+        Fase 7: CONSEQUÊNCIAS
+      </h1>
+
+      <div class="texto-enigma">
+	  <div class="texto-enigma">
+  <div class="poema-enigma enigma-bloqueado">
+    <p>
+      entao eu vi o lento,
+    </p>
+
+    <p>
+      destemido e imprudente,
+    </p>
+
+    <p>
+      atravessou a sala sem pedir
+    </p>
+
+    <p>
+      abrigo.
+    </p>
+  </div>
+
+  <p class="frase-baixa">
+    esse texto não foi feito para os olhos
+  </p>
+</div>
+
+      <form id="formResposta" class="area-resposta">
+
+        <p
+          id="mensagemResposta"
+          class="mensagem-resposta"
+          aria-live="polite"
+        ></p>
+
+        <input
+          id="campoResposta"
+          class="campo-resposta"
+          type="text"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="digite sua resposta aqui"
+          required
+        >
+
+        <button
+          class="botao-continuar"
+          type="submit"
+        >
+          CONTINUAR
+        </button>
+
+      </form>
+
+      <section
+        id="areaRespostaRevelada"
+        class="area-resposta-revelada"
+        hidden
+      >
+        <button
+          id="botaoRevelarResposta"
+          class="botao-revelar-resposta"
+          type="button"
+        >
+          REVELAR RESPOSTA
+        </button>
+
+        <p
+          id="respostaRevelada"
+          class="resposta-revelada"
+          hidden
+        ></p>
+      </section>
+
+    </section>
+
+  </main>
+
+  <div
+    id="transicaoFase"
+    class="transicao-fase"
+  ></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../niags-api.js"></script>
+<script src="fase-07.js"></script>
+</body>
+</html>
