@@ -540,4 +540,19 @@ botaoFecharRanking.addEventListener("click", () => {
   }, 1000);
 });
 
+document.addEventListener("keydown", (evento) => {
+  if (
+    evento.key === "Escape" &&
+    !telaRanking.hidden
+  ) {
+    telaRanking.classList.remove("ativa");
+    telaRanking.classList.add("saindo");
+
+    setTimeout(() => {
+      telaRanking.hidden = true;
+      telaRanking.classList.remove("saindo");
+    }, 1000);
+  }
+});
+
 carregarRegistroPeloSupabase();
