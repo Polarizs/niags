@@ -434,5 +434,110 @@ botaoFecharInstrucoes.addEventListener("click", () => {
   }, 1000);
 });
 
+function formatarPosicaoRanking(posicao) {
+  return String(posicao).padStart(2, "0");
+}
+
+
+function criarItemRanking(item) {
+  const linha =
+    document.createElement("div");
+
+  linha.className =
+    "linha-ranking item-ranking";
+
+  if (item.fase_numero > 10) {
+    linha.classList.add("rank-finalizado");
+  }
+
+  const posicao =
+    document.createElement("span");
+
+  posicao.className =
+    "rank-posicao";
+
+  posicao.textContent =
+    formatarPosicaoRanking(item.rank_pos);
+
+  const usuario =
+    document.createElement("span");
+
+  usuario.className =
+    "rank-usuario";
+
+  usuario.textContent =
+    String(item.usuario || "observador")
+      .toUpperCase();
+
+  const fase =
+    document.createElement("span");
+
+  fase.className =
+    "rank-fase";
+
+  fase.textContent =
+    item.fase_nome || `FASE ${item.fase_numero}`;
+
+  linha.appendChild(posicao);
+  linha.appendChild(usuario);
+  linha.appendChild(fase);
+
+  return linha;
+}
+
+
+async function carregarRanking() {
+  listaRanking.innerHTML =
+    `<p class="ranking-carregando">carregando registros...</p>`;
+
+  const ranking =
+    await niagsRanking();
+
+  if (!Array.isArray(ranking) || ranking.length === 0) {
+    listaRanking.innerHTML =
+      `<p class="ranking-vazio">nenhum observador registrado.</p>`;
+
+    return;
+  }
+
+  if (ranking[0].ok === false) {
+    listaRanking.innerHTML =
+      `<p class="ranking-erro">${ranking[0].mensagem || "não foi possível carregar o ranking."}</p>`;
+
+    return;
+  }
+
+  listaRanking.innerHTML =
+    "";
+
+  ranking.forEach((item) => {
+    listaRanking.appendChild(
+      criarItemRanking(item)
+    );
+  });
+}
+
+
+botaoRanking.addEventListener("click", async () => {
+  telaRanking.hidden = false;
+  telaRanking.classList.remove("saindo");
+
+  requestAnimationFrame(() => {
+    telaRanking.classList.add("ativa");
+  });
+
+  await carregarRanking();
+});
+
+
+botaoFecharRanking.addEventListener("click", () => {
+  telaRanking.classList.remove("ativa");
+  telaRanking.classList.add("saindo");
+
+  setTimeout(() => {
+    telaRanking.hidden = true;
+    telaRanking.classList.remove("saindo");
+  }, 1000);
+});
 
 carregarRegistroPeloSupabase();
