@@ -11,75 +11,6 @@ const somAdentroRegistro =
   document.getElementById("somAdentroRegistro");
 
 
-function criarMarcaTemporaria() {
-  const marcador =
-    document.createElement("span");
-
-  marcador.className =
-    "marca-temporaria";
-
-  marcador.textContent =
-    [100, 101, 115, 105, 115, 116, 105, 114]
-      .map((codigo) => String.fromCharCode(codigo))
-      .join("");
-
-  document.body.appendChild(marcador);
-
-  setTimeout(() => {
-    marcador.remove();
-  }, 6000);
-}
-
-
-function iniciarSequenciaDoAviso() {
-  setTimeout(() => {
-    avisoInicial.classList.add("mostrar-cabecalho");
-  }, 1000);
-
-  setTimeout(() => {
-    avisoInicial.classList.add("mostrar-texto");
-
-    criarMarcaTemporaria();
-  }, 3000);
-
-  setTimeout(() => {
-    avisoInicial.classList.add("mostrar-prosseguir");
-  }, 10000);
-}
-
-
-async function iniciarMusicaDoRegistro() {
-  if (!somAdentroRegistro) {
-    return;
-  }
-
-  somAdentroRegistro.volume = 0.15;
-
-  try {
-    await somAdentroRegistro.play();
-  } catch (erro) {
-  console.error("O áudio não tocou:", erro);
-}
-}
-
-
-botaoProsseguirAviso.addEventListener("click", async () => {
-  await iniciarMusicaDoRegistro();
-
-  avisoInicial.classList.add("saindo");
-
-  setTimeout(() => {
-    avisoInicial.hidden = true;
-
-    conteudoRegistro.classList.remove("bloqueado");
-    conteudoRegistro.classList.add("liberado");
-  }, 1200);
-});
-
-
-iniciarSequenciaDoAviso();
-
-
 const colunasFases = [
   document.getElementById("colunaFases1"),
   document.getElementById("colunaFases2"),
@@ -122,6 +53,7 @@ const botaoFecharRanking =
 const listaRanking =
   document.getElementById("listaRanking");
 
+
 const CHAVE_FASE_ATUAL =
   "niagsFaseAtual";
 
@@ -150,9 +82,81 @@ let faseAtualServidor =
   1;
 
 
+function criarMarcaTemporaria() {
+  const marcador =
+    document.createElement("span");
+
+  marcador.className =
+    "marca-temporaria";
+
+  marcador.textContent =
+    [100, 101, 115, 105, 115, 116, 105, 114]
+      .map((codigo) => String.fromCharCode(codigo))
+      .join("");
+
+  document.body.appendChild(marcador);
+
+  setTimeout(() => {
+    marcador.remove();
+  }, 6000);
+}
+
+
+function iniciarSequenciaDoAviso() {
+  setTimeout(() => {
+    avisoInicial.classList.add("mostrar-cabecalho");
+  }, 1000);
+
+  setTimeout(() => {
+    avisoInicial.classList.add("mostrar-texto");
+
+    criarMarcaTemporaria();
+  }, 3000);
+
+  setTimeout(() => {
+    avisoInicial.classList.add("mostrar-prosseguir");
+  }, 10000);
+}
+
+
+async function iniciarMusicaDoRegistro() {
+  if (!somAdentroRegistro) {
+    return;
+  }
+
+  somAdentroRegistro.volume =
+    0.15;
+
+  try {
+    await somAdentroRegistro.play();
+  } catch (erro) {
+    console.error(
+      "O áudio não tocou:",
+      erro
+    );
+  }
+}
+
+
+botaoProsseguirAviso.addEventListener("click", async () => {
+  await iniciarMusicaDoRegistro();
+
+  avisoInicial.classList.add("saindo");
+
+  setTimeout(() => {
+    avisoInicial.hidden =
+      true;
+
+    conteudoRegistro.classList.remove("bloqueado");
+    conteudoRegistro.classList.add("liberado");
+  }, 1200);
+});
+
+
 function limparColunas() {
   colunasFases.forEach((coluna) => {
-    coluna.innerHTML = "";
+    coluna.innerHTML =
+      "";
   });
 }
 
@@ -164,11 +168,14 @@ function criarFasesConcluidas(faseAtual) {
     Math.min(faseAtual - 1, 10);
 
   if (ultimaFaseConcluida <= 0) {
-    nenhumaFase.hidden = false;
+    nenhumaFase.hidden =
+      false;
+
     return;
   }
 
-  nenhumaFase.hidden = true;
+  nenhumaFase.hidden =
+    true;
 
   for (
     let numero = 1;
@@ -209,11 +216,14 @@ function criarFasesConcluidas(faseAtual) {
 
 function mostrarUsuario(nome) {
   if (!nome) {
-    usuarioRegistro.hidden = true;
+    usuarioRegistro.hidden =
+      true;
+
     return;
   }
 
-  usuarioRegistro.hidden = false;
+  usuarioRegistro.hidden =
+    false;
 
   usuarioRegistro.textContent =
     `REGISTRO: ${nome.toUpperCase()}`;
@@ -236,111 +246,6 @@ function abrirFase(numeroDaFase) {
   }, 900);
 }
 
-function formatarPosicaoRanking(posicao) {
-  return String(posicao).padStart(2, "0");
-}
-
-
-function criarItemRanking(item) {
-  const linha =
-    document.createElement("div");
-
-  linha.className =
-    "linha-ranking item-ranking";
-
-  if (item.fase_numero > 10) {
-    linha.classList.add("rank-finalizado");
-  }
-
-  const posicao =
-    document.createElement("span");
-
-  posicao.className =
-    "rank-posicao";
-
-  posicao.textContent =
-    formatarPosicaoRanking(item.rank_pos);
-
-  const usuario =
-    document.createElement("span");
-
-  usuario.className =
-    "rank-usuario";
-
-  usuario.textContent =
-    String(item.usuario || "observador")
-      .toUpperCase();
-
-  const fase =
-    document.createElement("span");
-
-  fase.className =
-    "rank-fase";
-
-  fase.textContent =
-    item.fase_nome || `FASE ${item.fase_numero}`;
-
-  linha.appendChild(posicao);
-  linha.appendChild(usuario);
-  linha.appendChild(fase);
-
-  return linha;
-}
-
-
-async function carregarRanking() {
-  listaRanking.innerHTML =
-    `<p class="ranking-carregando">carregando registros...</p>`;
-
-  const ranking =
-    await niagsRanking();
-
-  if (!Array.isArray(ranking) || ranking.length === 0) {
-    listaRanking.innerHTML =
-      `<p class="ranking-vazio">nenhum observador registrado.</p>`;
-
-    return;
-  }
-
-  if (ranking[0].ok === false) {
-    listaRanking.innerHTML =
-      `<p class="ranking-erro">${ranking[0].mensagem || "não foi possível carregar o ranking."}</p>`;
-
-    return;
-  }
-
-  listaRanking.innerHTML =
-    "";
-
-  ranking.forEach((item) => {
-    listaRanking.appendChild(
-      criarItemRanking(item)
-    );
-  });
-}
-
-
-botaoRanking.addEventListener("click", async () => {
-  telaRanking.hidden = false;
-  telaRanking.classList.remove("saindo");
-
-  requestAnimationFrame(() => {
-    telaRanking.classList.add("ativa");
-  });
-
-  await carregarRanking();
-});
-
-
-botaoFecharRanking.addEventListener("click", () => {
-  telaRanking.classList.remove("ativa");
-  telaRanking.classList.add("saindo");
-
-  setTimeout(() => {
-    telaRanking.hidden = true;
-    telaRanking.classList.remove("saindo");
-  }, 1000);
-});
 
 async function carregarRegistroPeloSupabase() {
   const token =
@@ -415,7 +320,9 @@ botaoFaseAtual.addEventListener(
 
 
 botaoInstrucoes.addEventListener("click", () => {
-  telaInstrucoes.hidden = false;
+  telaInstrucoes.hidden =
+    false;
+
   telaInstrucoes.classList.remove("saindo");
 
   requestAnimationFrame(() => {
@@ -429,10 +336,13 @@ botaoFecharInstrucoes.addEventListener("click", () => {
   telaInstrucoes.classList.add("saindo");
 
   setTimeout(() => {
-    telaInstrucoes.hidden = true;
+    telaInstrucoes.hidden =
+      true;
+
     telaInstrucoes.classList.remove("saindo");
   }, 1000);
 });
+
 
 function formatarPosicaoRanking(posicao) {
   return String(posicao).padStart(2, "0");
@@ -476,7 +386,8 @@ function criarItemRanking(item) {
     "rank-fase";
 
   fase.textContent =
-    item.fase_nome || `FASE ${item.fase_numero}`;
+    item.fase_nome ||
+    `FASE ${item.fase_numero}`;
 
   linha.appendChild(posicao);
   linha.appendChild(usuario);
@@ -519,7 +430,9 @@ async function carregarRanking() {
 
 
 botaoRanking.addEventListener("click", async () => {
-  telaRanking.hidden = false;
+  telaRanking.hidden =
+    false;
+
   telaRanking.classList.remove("saindo");
 
   requestAnimationFrame(() => {
@@ -530,29 +443,34 @@ botaoRanking.addEventListener("click", async () => {
 });
 
 
-botaoFecharRanking.addEventListener("click", () => {
+function fecharRanking() {
   telaRanking.classList.remove("ativa");
   telaRanking.classList.add("saindo");
 
   setTimeout(() => {
-    telaRanking.hidden = true;
+    telaRanking.hidden =
+      true;
+
     telaRanking.classList.remove("saindo");
   }, 1000);
+}
+
+
+botaoFecharRanking.addEventListener("click", () => {
+  fecharRanking();
 });
+
 
 document.addEventListener("keydown", (evento) => {
   if (
     evento.key === "Escape" &&
     !telaRanking.hidden
   ) {
-    telaRanking.classList.remove("ativa");
-    telaRanking.classList.add("saindo");
-
-    setTimeout(() => {
-      telaRanking.hidden = true;
-      telaRanking.classList.remove("saindo");
-    }, 1000);
+    fecharRanking();
   }
 });
+
+
+iniciarSequenciaDoAviso();
 
 carregarRegistroPeloSupabase();
