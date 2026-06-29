@@ -138,6 +138,44 @@ async function niagsRevelarResposta(numeroDaFase) {
   );
 }
 
+async function niagsChamarRpcLista(nomeFuncao, parametros) {
+  const { data, error } =
+    await niagsSupabase.rpc(
+      nomeFuncao,
+      parametros
+    );
+
+  if (error) {
+    console.error(
+      `Erro em ${nomeFuncao}:`,
+      error
+    );
+
+    return [
+      {
+        ok: false,
+        mensagem:
+          error.message ||
+          "erro de conexão com o NIAGS."
+      }
+    ];
+  }
+
+  return data || [];
+}
+
+
+async function niagsRanking() {
+  const token =
+    localStorage.getItem(CHAVE_NIAGS_SESSAO);
+
+  return niagsChamarRpcLista(
+    "niags_ranking",
+    {
+      token
+    }
+  );
+}
 
 function niagsLimparSessao() {
   localStorage.removeItem(CHAVE_NIAGS_SESSAO);
