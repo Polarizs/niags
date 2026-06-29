@@ -110,6 +110,17 @@ const telaInstrucoes =
 const botaoFecharInstrucoes =
   document.getElementById("botaoFecharInstrucoes");
 
+const botaoRanking =
+  document.getElementById("botaoRanking");
+
+const telaRanking =
+  document.getElementById("telaRanking");
+
+const botaoFecharRanking =
+  document.getElementById("botaoFecharRanking");
+
+const listaRanking =
+  document.getElementById("listaRanking");
 
 const CHAVE_FASE_ATUAL =
   "niagsFaseAtual";
