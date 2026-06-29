@@ -1055,3 +1055,169 @@ body::after {
   text-shadow:
     0 0 6px rgba(255, 255, 255, 0.12);
 }
+
+/* =========================
+   RANKING
+========================= */
+
+.acoes-observador {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 18px;
+}
+
+.botao-ranking {
+  margin-top: 0;
+}
+
+.caixa-ranking {
+  width: min(860px, 88vw);
+}
+
+.ranking-legenda {
+  margin-top: -28px;
+  margin-bottom: 34px;
+
+  color: rgba(220, 220, 220, 0.48);
+
+  font-size: 13px;
+  letter-spacing: 1.3px;
+}
+
+.tabela-ranking {
+  width: 100%;
+
+  padding: 22px 24px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(230, 230, 230, 0.10),
+      rgba(180, 180, 180, 0.045)
+    );
+
+  border: 1px solid rgba(235, 235, 235, 0.12);
+  border-radius: 18px;
+
+  box-shadow:
+    0 0 24px rgba(255, 255, 255, 0.035),
+    inset 0 0 24px rgba(255, 255, 255, 0.025);
+
+  backdrop-filter: blur(6px);
+}
+
+.linha-ranking {
+  display: grid;
+
+  grid-template-columns:
+    80px
+    minmax(130px, 1fr)
+    minmax(190px, 1.4fr);
+
+  gap: 18px;
+
+  align-items: center;
+
+  min-height: 38px;
+
+  padding: 0 12px;
+
+  color: rgba(235, 235, 235, 0.76);
+
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+.cabecalho-ranking {
+  min-height: 32px;
+
+  color: rgba(230, 230, 230, 0.50);
+
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+.item-ranking {
+  margin-top: 7px;
+
+  background:
+    rgba(235, 235, 235, 0.055);
+
+  border-radius: 7px;
+
+  animation:
+    aparecerFase
+    0.7s
+    ease
+    forwards;
+}
+
+.item-ranking:nth-child(odd) {
+  background:
+    rgba(235, 235, 235, 0.035);
+}
+
+.rank-posicao {
+  color: rgba(235, 235, 235, 0.82);
+}
+
+.rank-usuario {
+  color: rgba(245, 245, 245, 0.86);
+
+  font-weight: 500;
+}
+
+.rank-fase {
+  color: rgba(216, 216, 216, 0.72);
+}
+
+.rank-finalizado .rank-fase {
+  color: rgba(216, 184, 120, 0.92);
+}
+
+.ranking-carregando,
+.ranking-vazio,
+.ranking-erro {
+  padding: 24px 10px;
+
+  color: rgba(220, 220, 220, 0.52);
+
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.ranking-erro {
+  color: rgba(160, 24, 24, 0.92);
+}
+
+@media (max-width: 800px) {
+  .linha-ranking {
+    grid-template-columns:
+      58px
+      minmax(90px, 1fr);
+
+    gap: 10px;
+
+    font-size: 12px;
+  }
+
+  .linha-ranking span:nth-child(3) {
+    grid-column:
+      2 / 3;
+
+    font-size: 11px;
+
+    color: rgba(210, 210, 210, 0.54);
+  }
+
+  .cabecalho-ranking span:nth-child(3) {
+    display: none;
+  }
+
+  .tabela-ranking {
+    padding: 18px 14px;
+  }
+}
