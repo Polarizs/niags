@@ -430,3 +430,25 @@ body {
   pointer-events: none;
 }
 
+.aviso-fase-dez {
+  margin-top: 22px;
+  margin-bottom: 24px;
+
+  color: rgba(130, 24, 24, 0.88);
+
+  font-family:
+    Cambria,
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 20px;
+  font-weight: normal;
+  letter-spacing: 8px;
+
+  text-align: center;
+
+  text-shadow:
+    0 0 5px rgba(120, 0, 0, 0.18),
+    0 0 14px rgba(120, 0, 0, 0.08);
+}
